@@ -2,37 +2,28 @@
 
 // var spotify = require("keys.js")
 
-var command = process.argv[2];
-var query = process.argv[3];
-
-
-
 // Include the request npm package (Don't forget to run "npm install request" in this folder first!)
-
-var movieThis = function(movieQuery) {
-
 var request = require("request");
 
 // Store all of the arguments in an array
+var nodeArgs = process.argv;
 
 // Create an empty variable for holding the movie name
 var movieName = "";
 
 // Loop through all the words in the node argument
 // And do a little for-loop magic to handle the inclusion of "+"s
-for (var i = 2; i < movieQuery.length; i++) {
+for (var i = 2; i < nodeArgs.length; i++) {
 
-  if (i > 2 && i < movieQuery.length) {
+  if (i > 2 && i < nodeArgs.length) {
 
-    movieName = movieName + "+" + movieQuery[i];
+    movieName = movieName + "+" + nodeArgs[i];
 
   }
 
   else {
 
-    movieName += movieQuery[i];
-
-    console.log(movieQuery.length)
+    movieName += nodeArgs[i];
 
   }
 }
@@ -59,9 +50,12 @@ request(queryUrl, function(error, response, body) {
     console.log("Movie Actors: " + JSON.parse(body).Actors);     
   }
 });
-}
 
+var concertThis = function(consertThis){
+  var request = require("request");
 
-if(command === "movie-This"){
-    movieThis(query)
+  var concertData = process.argv;
+
+  
+
 }
