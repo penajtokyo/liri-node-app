@@ -1,13 +1,7 @@
-var dotenv = require("dotenv").config();
+// require("dotenv").config();
 
-var keys = require("./keys.js");
+// var spotify = require("keys.js")
 
-var Spotify = require('node-spotify-api');
-
-// Include the request npm package (Don't forget to run "npm install request" in this folder first!)
-var request = require("request");
-
-// Store all of the arguments in an array
 var command = process.argv[2];
 var query = process.argv.slice(3).join(" ");
 
@@ -66,43 +60,9 @@ request(queryUrl, function(error, response, body) {
   }
 });
 }
-var spotifyThis =function(song){
-var spotify = new Spotify({id:keys.spotify.id, secret:keys.spotify.secret});
-
- 
-spotify.search({ type: 'track', query: song}, function(err, data) {
-  if (err) {
-    return console.log('Error occurred: ' + err);
-  }
- 
-console.log(data.tracks.items[0].album.artists[0].name); 
-});   
-}
-
-var conertThis = function(artist){
-  var artist=artist
-
-  var queryURL = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp";
-
-  console.log(queryURL)
-
-  request(queryURL, function(error, response, body) {
- console.log(JSON.parse(body))
-  })
-
-
-
-}
 
 console.log(command)
 if(command === "movie-this"){
     console.log("hit")
     movieThis(query)
-}else if (command === "spotify-this-song"){
-  spotifyThis(query)
-}else if (command === "find-band-concert"){
-  conertThis(query)
 }
-
-
-
