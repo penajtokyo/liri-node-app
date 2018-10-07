@@ -24,24 +24,6 @@ var request = require("request");
 // Create an empty variable for holding the movie name
 var movieName = movieQuery;
 
-// Loop through all the words in the node argument
-// And do a little for-loop magic to handle the inclusion of "+"s
-// for (var i = 2; i < movieQuery.length; i++) {
-
-//   if (i > 2 && i < movieQuery.length) {
-
-//     movieName = movieName + "+" + movieQuery[i];
-
-//   }
-
-//   else {
-
-//     movieName += movieQuery[i];
-
-//     console.log(movieQuery.length)
-
-//   }
-// }
 console.log(movieName)
 // Then run a request to the OMDB API with the movie specified
 var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
@@ -76,6 +58,8 @@ spotify.search({ type: 'track', query: song}, function(err, data) {
   }
  
 console.log(data.tracks.items[0].album.artists[0].name); 
+console.log(data.tracks.items[0].album.name)
+
 });   
 }
 
@@ -87,7 +71,7 @@ var conertThis = function(artist){
   console.log(queryURL)
 
   request(queryURL, function(error, response, body) {
- console.log(JSON.parse(body))
+  console.log(JSON.parse(body));
   })
 
 
@@ -95,7 +79,7 @@ var conertThis = function(artist){
 }
 
 console.log(command)
-if(command === "movie-this"){
+if(command === "movie-this"){   
     console.log("hit")
     movieThis(query)
 }else if (command === "spotify-this-song"){
